@@ -1158,20 +1158,25 @@ export default function AskMe() {
         />
       )}
       {showGH && (
-  <GithubModal
-    onClose={() => {
-      setShowGH(false);
-      setShowConn(true);
-    }}
-    onConnect={(info) => {
-      setConnectors(prev =>
-        prev.map(c =>
-          c.id === "github"
-            ? { ...c, active: true, ...info }
-            : c
-        )
-      );
-      setShowGH(false);
-    }}
-  />
-)}
+        <GithubModal
+          onClose={() => {
+            setShowGH(false);
+            setShowConn(true);
+          }}
+          onConnect={(info) => {
+            setConnectors(prev =>
+              prev.map(c =>
+                c.id === "github"
+                  ? { ...c, active: true, ...info }
+                  : c
+              )
+            );
+            setShowGH(false);
+          }}
+        />
+      )}
+    </> // <--- THIS IS LIKELY WHAT IS MISSING
+  );
+};
+
+export default AskMe;
